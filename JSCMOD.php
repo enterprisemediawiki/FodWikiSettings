@@ -58,6 +58,10 @@ function addJSCMODjavascript( $out ){
 }
 
 
+if ($egJSCMOD_manageExtensions) {
+	require_once dirname( __FILE__ ) . "/Extensions.php";
+}
+
 ## The following included script gets programmatically modified 
 ## during backup operations to set read-only prior to backup and
 ## unset when backup is complete
