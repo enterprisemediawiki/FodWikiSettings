@@ -119,114 +119,139 @@ $wgUseRCPatrol = true;
 $wgUseNPPatrol = true;
 
 
-#
-#	AUTH SETTINGS
-#
+if ($egJSCMOD_local_auth) {
+	$wgGroupPermissions['*']['createaccount'] = false;
+	$wgGroupPermissions['*']['read'] = false;
+	$wgGroupPermissions['*']['edit'] = false;
 
-// see http://www.mediawiki.org/wiki/Manual:Hooks/SpecialPage_initList
-// and http://www.mediawiki.org/w/Manual:Special_pages
-// and http://lists.wikimedia.org/pipermail/mediawiki-l/2009-June/031231.html
-// disable login and logout functions for all users
-function LessSpecialPages(&$list) {
-        unset( $list['Userlogout'] );
-        unset( $list['Userlogin'] );
-        return true;
+	$wgGroupPermissions['user']['talk'] = true; 
+	$wgGroupPermissions['user']['read'] = true;
+	$wgGroupPermissions['user']['edit'] = false;
+
+	// Viewer group is used by the Auth_remoteuser extension to allow only those in
+	// group "Viewer" to view the wiki. This allows anyone with NDC auth to get to the
+	// wiki (which auto-creates an account for them), but doesn't allow those users to
+	// see any of the wiki (besided the "access denied" page and "request access" page)
+	$wgGroupPermissions['Viewer']['talk'] = true; 
+	$wgGroupPermissions['Viewer']['read'] = true;
+	$wgGroupPermissions['Viewer']['edit'] = false;
+	$wgGroupPermissions['Viewer']['movefile'] = true;
+
+	$wgGroupPermissions['Contributor'] = $wgGroupPermissions['user'];
+	$wgGroupPermissions['Contributor']['edit'] = true;
+	$wgGroupPermissions['Contributor']['unwatchedpages'] = true;
 }
-$wgHooks['SpecialPage_initList'][]='LessSpecialPages';
- 
-// http://www.mediawiki.org/wiki/Extension:Windows_NTLM_LDAP_Auto_Auth
-// remove login and logout buttons for all users
-function StripLogin(&$personal_urls, &$wgTitle) {  
-        unset( $personal_urls["login"] );
-        unset( $personal_urls["logout"] );
-        unset( $personal_urls['anonlogin'] );
-        return true;
+else {
+	
+	#
+	#	AUTH SETTINGS
+	#
+
+	// see http://www.mediawiki.org/wiki/Manual:Hooks/SpecialPage_initList
+	// and http://www.mediawiki.org/w/Manual:Special_pages
+	// and http://lists.wikimedia.org/pipermail/mediawiki-l/2009-June/031231.html
+	// disable login and logout functions for all users
+	function LessSpecialPages(&$list) {
+			unset( $list['Userlogout'] );
+			unset( $list['Userlogin'] );
+			return true;
+	}
+	$wgHooks['SpecialPage_initList'][]='LessSpecialPages';
+	 
+	// http://www.mediawiki.org/wiki/Extension:Windows_NTLM_LDAP_Auto_Auth
+	// remove login and logout buttons for all users
+	function StripLogin(&$personal_urls, &$wgTitle) {  
+			unset( $personal_urls["login"] );
+			unset( $personal_urls["logout"] );
+			unset( $personal_urls['anonlogin'] );
+			return true;
+	}
+	$wgHooks['PersonalUrls'][] = 'StripLogin';
+
+	$wgGroupPermissions['*']['createaccount'] = false;
+	$wgGroupPermissions['*']['read'] = false;
+	$wgGroupPermissions['*']['edit'] = false;
+
+	$wgGroupPermissions['user']['talk'] = true; 
+	$wgGroupPermissions['user']['read'] = true;
+	$wgGroupPermissions['user']['edit'] = false;
+
+	// Viewer group is used by the Auth_remoteuser extension to allow only those in
+	// group "Viewer" to view the wiki. This allows anyone with NDC auth to get to the
+	// wiki (which auto-creates an account for them), but doesn't allow those users to
+	// see any of the wiki (besided the "access denied" page and "request access" page)
+	$wgGroupPermissions['Viewer']['talk'] = true; 
+	$wgGroupPermissions['Viewer']['read'] = true;
+	$wgGroupPermissions['Viewer']['edit'] = false;
+	$wgGroupPermissions['Viewer']['movefile'] = true;
+
+	$wgGroupPermissions['Contributor'] = $wgGroupPermissions['user'];
+	$wgGroupPermissions['Contributor']['edit'] = true;
+	$wgGroupPermissions['Contributor']['unwatchedpages'] = true;
+
+	#
+	#   CURATORs: people with delete permissions for now
+	#
+	$wgGroupPermissions['Curator']['delete'] = true; // Delete pages
+	$wgGroupPermissions['Curator']['bigdelete'] = true; // Delete pages with large histories
+	$wgGroupPermissions['Curator']['suppressredirect'] = true; // Not create redirect when moving page
+	$wgGroupPermissions['Curator']['browsearchive'] = true; // Search deleted pages
+	$wgGroupPermissions['Curator']['undelete'] = true; // Undelete a page
+	$wgGroupPermissions['Curator']['deletedhistory'] = true; // View deleted history w/o associated text
+	$wgGroupPermissions['Curator']['deletedtext'] = true; // View deleted text/changes between deleted revs
+
+	#
+	#   MANAGERs: can edit user rights, plus used in MediaWiki:Approvedrevs-permissions
+	#   to allow managers to give managers the ability to approve pages (lesson plans, ESOP, etc)
+	#
+	$wgGroupPermissions['Manager']['userrights'] = true; // Edit all user rights
+
+
+	// I think this is for web api url caching
+	//$edgCacheTable = 'ed_url_cache';
+	//$edgCacheExpireTime = 0;
+
+	// opens external links in new window
+	$wgExternalLinkTarget = '_blank';
+
+	// added this line to allow linking. specifically to Imagery Online.
+	$wgAllowExternalImages = true;
+	$wgAllowImageTag = true;
+
+
+
+	//$wgDefaultUserOptions['useeditwarning'] = 1;
+	// disable page edit warning (edit warning affect Semantic Forms)
+	$wgVectorFeatures['editwarning']['global'] = false;
+
+	//$wgDefaultUserOptions['vector-collapsiblenav'] = 1;
+		// 'collapsiblenav' => array( 'global' => true, 'user' => true ),
+		// 'collapsibletabs' => array( 'global' => true, 'user' => false ),
+		// 'editwarning' => array( 'global' => false, 'user' => true ),
+		// 'expandablesearch' => array( 'global' => false, 'user' => false ),
+		// 'footercleanup' => array( 'global' => false, 'user' => false ),
+		// 'simplesearch' => array( 'global' => false, 'user' => true ),
+
+
+	$wgDefaultUserOptions['rememberpassword'] = 1;
+
+	// users watch pages by default (they can override in settings)
+	$wgDefaultUserOptions['watchdefault'] = 1;
+	$wgDefaultUserOptions['watchmoves'] = 1;
+	$wgDefaultUserOptions['watchdeletion'] = 1;
+
+	$wgEnableMWSuggest = true;
+
+	// fixes login issue for some users (login issue fixed in MW version 1.18.1 supposedly)
+	$wgDisableCookieCheck = true;
+
+	#Set Default Timezone
+	$wgLocaltimezone = "America/Chicago";
+	$oldtz = getenv("TZ");
+	putenv("TZ=$wgLocaltimezone");
+
+	$wgMaxUploadSize = 1024*1024*30;
+	//$wgUploadSizeWarning = 1024*1024*100;
+
+	$wgMaxTocLevel = 3;
 }
-$wgHooks['PersonalUrls'][] = 'StripLogin';
-
-$wgGroupPermissions['*']['createaccount'] = false;
-$wgGroupPermissions['*']['read'] = false;
-$wgGroupPermissions['*']['edit'] = false;
-
-$wgGroupPermissions['user']['talk'] = true; 
-$wgGroupPermissions['user']['read'] = true;
-$wgGroupPermissions['user']['edit'] = false;
-
-// Viewer group is used by the Auth_remoteuser extension to allow only those in
-// group "Viewer" to view the wiki. This allows anyone with NDC auth to get to the
-// wiki (which auto-creates an account for them), but doesn't allow those users to
-// see any of the wiki (besided the "access denied" page and "request access" page)
-$wgGroupPermissions['Viewer']['talk'] = true; 
-$wgGroupPermissions['Viewer']['read'] = true;
-$wgGroupPermissions['Viewer']['edit'] = false;
-$wgGroupPermissions['Viewer']['movefile'] = true;
-
-$wgGroupPermissions['Contributor'] = $wgGroupPermissions['user'];
-$wgGroupPermissions['Contributor']['edit'] = true;
-$wgGroupPermissions['Contributor']['unwatchedpages'] = true;
-
-#
-#   CURATORs: people with delete permissions for now
-#
-$wgGroupPermissions['Curator']['delete'] = true; // Delete pages
-$wgGroupPermissions['Curator']['bigdelete'] = true; // Delete pages with large histories
-$wgGroupPermissions['Curator']['suppressredirect'] = true; // Not create redirect when moving page
-$wgGroupPermissions['Curator']['browsearchive'] = true; // Search deleted pages
-$wgGroupPermissions['Curator']['undelete'] = true; // Undelete a page
-$wgGroupPermissions['Curator']['deletedhistory'] = true; // View deleted history w/o associated text
-$wgGroupPermissions['Curator']['deletedtext'] = true; // View deleted text/changes between deleted revs
-
-#
-#   MANAGERs: can edit user rights, plus used in MediaWiki:Approvedrevs-permissions
-#   to allow managers to give managers the ability to approve pages (lesson plans, ESOP, etc)
-#
-$wgGroupPermissions['Manager']['userrights'] = true; // Edit all user rights
-
-
-// I think this is for web api url caching
-//$edgCacheTable = 'ed_url_cache';
-//$edgCacheExpireTime = 0;
-
-// opens external links in new window
-$wgExternalLinkTarget = '_blank';
-
-// added this line to allow linking. specifically to Imagery Online.
-$wgAllowExternalImages = true;
-$wgAllowImageTag = true;
-
-
-
-//$wgDefaultUserOptions['useeditwarning'] = 1;
-// disable page edit warning (edit warning affect Semantic Forms)
-$wgVectorFeatures['editwarning']['global'] = false;
-
-//$wgDefaultUserOptions['vector-collapsiblenav'] = 1;
-	// 'collapsiblenav' => array( 'global' => true, 'user' => true ),
-	// 'collapsibletabs' => array( 'global' => true, 'user' => false ),
-	// 'editwarning' => array( 'global' => false, 'user' => true ),
-	// 'expandablesearch' => array( 'global' => false, 'user' => false ),
-	// 'footercleanup' => array( 'global' => false, 'user' => false ),
-	// 'simplesearch' => array( 'global' => false, 'user' => true ),
-
-
-$wgDefaultUserOptions['rememberpassword'] = 1;
-
-// users watch pages by default (they can override in settings)
-$wgDefaultUserOptions['watchdefault'] = 1;
-$wgDefaultUserOptions['watchmoves'] = 1;
-$wgDefaultUserOptions['watchdeletion'] = 1;
-
-$wgEnableMWSuggest = true;
-
-// fixes login issue for some users (login issue fixed in MW version 1.18.1 supposedly)
-$wgDisableCookieCheck = true;
-
-#Set Default Timezone
-$wgLocaltimezone = "America/Chicago";
-$oldtz = getenv("TZ");
-putenv("TZ=$wgLocaltimezone");
-
-$wgMaxUploadSize = 1024*1024*30;
-//$wgUploadSizeWarning = 1024*1024*100;
-
-$wgMaxTocLevel = 3;

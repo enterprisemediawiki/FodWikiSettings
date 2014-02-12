@@ -70,19 +70,20 @@ require_once "$egJSCMOD_extensionsPath/TalkRight/TalkRight_1.4.1.php";
 //$wgGroupPermissions['Contributor'] = $wgGroupPermissions['user'];
 
 #### BEGIN USER AUTH ####
+if ( ! $egJSCMOD_local_auth ) {
+
+	// Auth_remoteuser extension, updated by James Montalvo, blocks remote users not
+	// part of the group defined by $wgAuthRemoteuserViewerGroup
+	$wgAuthRemoteuserViewerGroup = "Viewer"; // set to false to allow all valid REMOTE_USER to view; set to group name to restrict viewing to particular group
+	$wgAuthRemoteuserDeniedPage = "Access_Denied"; // redirect non-viewers to this page (namespace below)
+	$wgAuthRemoteuserDeniedNS = NS_PROJECT; // redirect non-viewers to page in this namespace
 
 
-// Auth_remoteuser extension, updated by James Montalvo, blocks remote users not
-// part of the group defined by $wgAuthRemoteuserViewerGroup
-$wgAuthRemoteuserViewerGroup = "Viewer"; // set to false to allow all valid REMOTE_USER to view; set to group name to restrict viewing to particular group
-$wgAuthRemoteuserDeniedPage = "Access_Denied"; // redirect non-viewers to this page (namespace below)
-$wgAuthRemoteuserDeniedNS = NS_PROJECT; // redirect non-viewers to page in this namespace
+	require_once "$egJSCMOD_extensionsPath/Auth_remoteuser/Auth_remoteuser.php";
+	$wgAuth = new Auth_remoteuser();
+	// see extension JSCMOD for auth settings
 
-
-require_once "$egJSCMOD_extensionsPath/Auth_remoteuser/Auth_remoteuser.php";
-$wgAuth = new Auth_remoteuser();
-// see extension JSCMOD for auth settings
-
+}
 #
 #
 #### END USER AUTH AND PERMISSIONS ####
