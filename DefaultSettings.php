@@ -206,52 +206,52 @@ else {
 	#
 	$wgGroupPermissions['Manager']['userrights'] = true; // Edit all user rights
 
-
-	// I think this is for web api url caching
-	//$edgCacheTable = 'ed_url_cache';
-	//$edgCacheExpireTime = 0;
-
-	// opens external links in new window
-	$wgExternalLinkTarget = '_blank';
-
-	// added this line to allow linking. specifically to Imagery Online.
-	$wgAllowExternalImages = true;
-	$wgAllowImageTag = true;
-
-
-
-	//$wgDefaultUserOptions['useeditwarning'] = 1;
-	// disable page edit warning (edit warning affect Semantic Forms)
-	$wgVectorFeatures['editwarning']['global'] = false;
-
-	//$wgDefaultUserOptions['vector-collapsiblenav'] = 1;
-		// 'collapsiblenav' => array( 'global' => true, 'user' => true ),
-		// 'collapsibletabs' => array( 'global' => true, 'user' => false ),
-		// 'editwarning' => array( 'global' => false, 'user' => true ),
-		// 'expandablesearch' => array( 'global' => false, 'user' => false ),
-		// 'footercleanup' => array( 'global' => false, 'user' => false ),
-		// 'simplesearch' => array( 'global' => false, 'user' => true ),
-
-
-	$wgDefaultUserOptions['rememberpassword'] = 1;
-
-	// users watch pages by default (they can override in settings)
-	$wgDefaultUserOptions['watchdefault'] = 1;
-	$wgDefaultUserOptions['watchmoves'] = 1;
-	$wgDefaultUserOptions['watchdeletion'] = 1;
-
-	$wgEnableMWSuggest = true;
-
-	// fixes login issue for some users (login issue fixed in MW version 1.18.1 supposedly)
-	$wgDisableCookieCheck = true;
-
-	#Set Default Timezone
-	$wgLocaltimezone = "America/Chicago";
-	$oldtz = getenv("TZ");
-	putenv("TZ=$wgLocaltimezone");
-
-	$wgMaxUploadSize = 1024*1024*30;
-	//$wgUploadSizeWarning = 1024*1024*100;
-
-	$wgMaxTocLevel = 3;
 }
+
+// I think this is for web api url caching
+//$edgCacheTable = 'ed_url_cache';
+//$edgCacheExpireTime = 0;
+
+// opens external links in new window
+$wgExternalLinkTarget = '_blank';
+
+// added this line to allow linking. specifically to Imagery Online.
+$wgAllowExternalImages = true;
+$wgAllowImageTag = true;
+
+
+
+//$wgDefaultUserOptions['useeditwarning'] = 1;
+// disable page edit warning (edit warning affect Semantic Forms)
+$wgVectorFeatures['editwarning']['global'] = false;
+
+//$wgDefaultUserOptions['vector-collapsiblenav'] = 1;
+	// 'collapsiblenav' => array( 'global' => true, 'user' => true ),
+	// 'collapsibletabs' => array( 'global' => true, 'user' => false ),
+	// 'editwarning' => array( 'global' => false, 'user' => true ),
+	// 'expandablesearch' => array( 'global' => false, 'user' => false ),
+	// 'footercleanup' => array( 'global' => false, 'user' => false ),
+	// 'simplesearch' => array( 'global' => false, 'user' => true ),
+
+
+$wgDefaultUserOptions['rememberpassword'] = 1;
+
+// users watch pages by default (they can override in settings)
+$wgDefaultUserOptions['watchdefault'] = 1;
+$wgDefaultUserOptions['watchmoves'] = 1;
+$wgDefaultUserOptions['watchdeletion'] = 1;
+
+$wgEnableMWSuggest = true;
+
+// fixes login issue for some users (login issue fixed in MW version 1.18.1 supposedly)
+$wgDisableCookieCheck = true;
+
+#Set Default Timezone
+$wgLocaltimezone = "America/Chicago";
+$oldtz = getenv("TZ");
+putenv("TZ=$wgLocaltimezone");
+
+$wgMaxUploadSize = 1024*1024*30;
+//$wgUploadSizeWarning = 1024*1024*100;
+
+$wgMaxTocLevel = 3;
