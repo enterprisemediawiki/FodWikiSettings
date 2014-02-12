@@ -1,7 +1,11 @@
 <?php
-$egJSCMOD_extensionsPath = "$IP/../extensions";
-// $egJSCMOD_extensionsPath = "$IP/extensions";
 
+if ($egJSCMOD_independentExtensions) {
+	$egJSCMOD_extensionsPath = "$IP/extensions";
+} 
+else {
+	$egJSCMOD_extensionsPath = "$IP/../extensions";
+}
 
 require_once "$egJSCMOD_extensionsPath/ParserFunctions/ParserFunctions.php";
 $wgPFEnableStringFunctions = true;
