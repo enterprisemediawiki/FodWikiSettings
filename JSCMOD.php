@@ -1,5 +1,8 @@
 <?php
 
+if ( ! isset($egJSCMOD_independentExtensions) )
+	$egJSCMOD_independentExtensions = false;
+
 // development: error reporting
 if ( $egJSCMOD_debug ) {
 
