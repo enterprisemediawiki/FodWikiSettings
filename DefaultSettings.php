@@ -4,10 +4,6 @@ $wgRCShowWatchingUsers = true; // shows number of watchers in recent changes
 // $wgAjaxUploadDestCheck = true; // AJAX check for file overwrite pre-upload
 // $wgPageShowWatchingUsers = true; // show number watching users on bottom of page...turn this on if not using WhoIsWatching
 
-// on MOD servers can't access the desired "C:\\Windows\TEMP" directory
-$wgTmpDirectory     = "d:\PHP\uploadtemp";
-
-
 
 $wgEnotifUserTalk      = true; # UPO
 $wgEnotifWatchlist     = true; # UPO
@@ -140,8 +136,21 @@ if ($egJSCMOD_local_auth) {
 	$wgGroupPermissions['Contributor'] = $wgGroupPermissions['user'];
 	$wgGroupPermissions['Contributor']['edit'] = true;
 	$wgGroupPermissions['Contributor']['unwatchedpages'] = true;
+	
+	
+	// Note: below, not in local auth, $wgTmpDirectory is set. There is no corresponding
+	// value for local auth, since most people can use whatever the default is, or will 
+	// have to set it explicitly
+	
+
 }
 else {
+	
+	// This is not an auth-setting, but is specific to MOD server configuration
+	// On MOD servers can't access the desired "C:\\Windows\TEMP" directory so this location
+	// was setup. Alternatively could have used the $IP/images directory, I think.
+	$wgTmpDirectory     = "d:\PHP\uploadtemp";
+
 	
 	#
 	#	AUTH SETTINGS
