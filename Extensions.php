@@ -178,3 +178,13 @@ $egApprovedRevsAutomaticApprovals = false;
 require_once "$egJSCMOD_extensionsPath/InputBox/InputBox.php";
 
 require_once "$egJSCMOD_extensionsPath/ReplaceText/ReplaceText.php";
+
+require_once "$egJSCMOD_extensionsPath/UploadWizard/UploadWizard.php";
+$wgExtensionFunctions[] = function() {
+	$GLOBALS['wgUploadNavigationUrl'] = SpecialPage::getTitleFor( 'UploadWizard' )->getLocalURL();
+	return true;
+};
+
+require_once "$egJSCMOD_extensionsPath/PageTriage/PageTriage.php";
+
+// require_once "$egJSCMOD_extensionsPath/Echo/Echo.php";

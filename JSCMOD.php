@@ -12,7 +12,7 @@ if ( $egJSCMOD_debug ) {
 	ini_set("log_errors", 1);
 	
 	// Output errors to log file
-	ini_set("error_log", "$egJSCMOD_FileSystemPath/$egJSCMOD_GroupName/extensions/JSCMOD/php.log");
+	ini_set("error_log", dirname( __FILE__ ). "/php.log");
 
 	// MediaWiki Debug Tools
 	$wgShowExceptionDetails = true;
