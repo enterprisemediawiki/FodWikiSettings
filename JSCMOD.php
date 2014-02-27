@@ -56,8 +56,6 @@ function addJSCMODjavascript( $out ){
 	global $wgScriptPath;
 	// $out->addScriptFile( $wgScriptPath .'/resources/session.min.js' );
 	$out->addScriptFile( $wgScriptPath .'/extensions/JSCMOD/script.js' );
-	$out->addScriptFile( $wgScriptPath .'/extensions/JSCMOD/Masonry/masonry.pkgd.min.js' );
-	$out->addScriptFile( $wgScriptPath .'/extensions/JSCMOD/Masonry/masonry-common.js' );
 
 	$out->addLink( array(
 		'rel' => 'stylesheet',
