@@ -4,6 +4,7 @@ if ($egJSCMOD_independentExtensions) {
 	$egJSCMOD_extensionsPath = "$IP/extensions";
 } 
 else {
+	$wgExtensionAssetsPath = "/wiki/extensions";
 	$egJSCMOD_extensionsPath = "$IP/../extensions";
 }
 
