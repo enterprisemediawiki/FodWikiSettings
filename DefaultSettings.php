@@ -115,107 +115,65 @@ $wgUseRCPatrol = true;
 $wgUseNPPatrol = true;
 
 
-if ($egJSCMOD_local_auth) {
-	$wgGroupPermissions['*']['createaccount'] = false;
-	$wgGroupPermissions['*']['read'] = false;
-	$wgGroupPermissions['*']['edit'] = false;
+#
+#	AUTH SETTINGS
+#
 
-	$wgGroupPermissions['user']['talk'] = true; 
-	$wgGroupPermissions['user']['read'] = true;
-	$wgGroupPermissions['user']['edit'] = false;
-
-	// Viewer group is used by the Auth_remoteuser extension to allow only those in
-	// group "Viewer" to view the wiki. This allows anyone with NDC auth to get to the
-	// wiki (which auto-creates an account for them), but doesn't allow those users to
-	// see any of the wiki (besided the "access denied" page and "request access" page)
-	$wgGroupPermissions['Viewer']['talk'] = true; 
-	$wgGroupPermissions['Viewer']['read'] = true;
-	$wgGroupPermissions['Viewer']['edit'] = false;
-	$wgGroupPermissions['Viewer']['movefile'] = true;
-
-	$wgGroupPermissions['Contributor'] = $wgGroupPermissions['user'];
-	$wgGroupPermissions['Contributor']['edit'] = true;
-	$wgGroupPermissions['Contributor']['unwatchedpages'] = true;
-	
-	
-	// Note: below, not in local auth, $wgTmpDirectory is set. There is no corresponding
-	// value for local auth, since most people can use whatever the default is, or will 
-	// have to set it explicitly
-	
-
+// set local based on old way of setting local for backwards compatibility
+if ( isset($egJSCMOD_local_auth) ) {
+	$egJSCMOD_auth_type = 'local_dev';
 }
-else {
-	
+
+$egJSCMOD_auth_type_array = array(
+	'local_dev',
+	'ndc_closed',
+	'ndc_openview',
+	'ndc_open',	
+);
+
+
+if ( ! isset($egJSCMOD_auth_type) ) {
+	throw new MWException( 'Use of Extension:JSCMOD requires $egJSCMOD_auth_type be set.' );
+	$egJSCMOD_auth_type = 'error';
+} else if ( ! in_array($egJSCMOD_auth_type, $egJSCMOD_auth_type_array) ) {
+	throw new MWException( 'Unsupported $egJSCMOD_auth_type set. See Extension:JSCMOD.' ); 
+	$egJSCMOD_auth_type = 'error';
+}
+
+// get authentication settings
+require_once dirname( __FILE__ ) . "/Auth/settings_$egJSCMOD_auth_type.php";
+
+
+if ($egJSCMOD_auth_type == 'ndc_closed') {
+	// Auth_remoteuser extension, updated by James Montalvo, blocks remote users not
+	// part of the group defined by $wgAuthRemoteuserViewerGroup
+	$wgAuthRemoteuserViewerGroup = "Viewer"; // set to false to allow all valid REMOTE_USER to view; set to group name to restrict viewing to particular group
+	$wgAuthRemoteuserDeniedPage = "Access_Denied"; // redirect non-viewers to this page (namespace below)
+	$wgAuthRemoteuserDeniedNS = NS_PROJECT; // redirect non-viewers to page in this namespace
+}
+
+if ($egJSCMOD_auth_type != 'local_dev') {
+
+	# any NDC
+	require_once dirname( __FILE__ ) . "/Auth/Auth.php";
+	$wgAuth = new Auth_remoteuser();
+
 	// This is not an auth-setting, but is specific to MOD server configuration
 	// On MOD servers can't access the desired "C:\\Windows\TEMP" directory so this location
 	// was setup. Alternatively could have used the $IP/images directory, I think.
 	$wgTmpDirectory     = "d:\PHP\uploadtemp";
-
-	
-	#
-	#	AUTH SETTINGS
-	#
-
-	// see http://www.mediawiki.org/wiki/Manual:Hooks/SpecialPage_initList
-	// and http://www.mediawiki.org/w/Manual:Special_pages
-	// and http://lists.wikimedia.org/pipermail/mediawiki-l/2009-June/031231.html
-	// disable login and logout functions for all users
-	function LessSpecialPages(&$list) {
-			unset( $list['Userlogout'] );
-			unset( $list['Userlogin'] );
-			return true;
-	}
-	$wgHooks['SpecialPage_initList'][]='LessSpecialPages';
-	 
-	// http://www.mediawiki.org/wiki/Extension:Windows_NTLM_LDAP_Auto_Auth
-	// remove login and logout buttons for all users
-	function StripLogin(&$personal_urls, &$wgTitle) {  
-			unset( $personal_urls["login"] );
-			unset( $personal_urls["logout"] );
-			unset( $personal_urls['anonlogin'] );
-			return true;
-	}
-	$wgHooks['PersonalUrls'][] = 'StripLogin';
-
-	$wgGroupPermissions['*']['createaccount'] = false;
-	$wgGroupPermissions['*']['read'] = false;
-	$wgGroupPermissions['*']['edit'] = false;
-
-	$wgGroupPermissions['user']['talk'] = true; 
-	$wgGroupPermissions['user']['read'] = true;
-	$wgGroupPermissions['user']['edit'] = false;
-
-	// Viewer group is used by the Auth_remoteuser extension to allow only those in
-	// group "Viewer" to view the wiki. This allows anyone with NDC auth to get to the
-	// wiki (which auto-creates an account for them), but doesn't allow those users to
-	// see any of the wiki (besided the "access denied" page and "request access" page)
-	$wgGroupPermissions['Viewer']['talk'] = true; 
-	$wgGroupPermissions['Viewer']['read'] = true;
-	$wgGroupPermissions['Viewer']['edit'] = false;
-	$wgGroupPermissions['Viewer']['movefile'] = true;
-
-	$wgGroupPermissions['Contributor'] = $wgGroupPermissions['user'];
-	$wgGroupPermissions['Contributor']['edit'] = true;
-	$wgGroupPermissions['Contributor']['unwatchedpages'] = true;
-
-	#
-	#   CURATORs: people with delete permissions for now
-	#
-	$wgGroupPermissions['Curator']['delete'] = true; // Delete pages
-	$wgGroupPermissions['Curator']['bigdelete'] = true; // Delete pages with large histories
-	$wgGroupPermissions['Curator']['suppressredirect'] = true; // Not create redirect when moving page
-	$wgGroupPermissions['Curator']['browsearchive'] = true; // Search deleted pages
-	$wgGroupPermissions['Curator']['undelete'] = true; // Undelete a page
-	$wgGroupPermissions['Curator']['deletedhistory'] = true; // View deleted history w/o associated text
-	$wgGroupPermissions['Curator']['deletedtext'] = true; // View deleted text/changes between deleted revs
-
-	#
-	#   MANAGERs: can edit user rights, plus used in MediaWiki:Approvedrevs-permissions
-	#   to allow managers to give managers the ability to approve pages (lesson plans, ESOP, etc)
-	#
-	$wgGroupPermissions['Manager']['userrights'] = true; // Edit all user rights
-
+	// Note: There is no corresponding value for local auth, since most people
+	// can use whatever the default is, or will have to set it explicitly
 }
+
+
+
+
+
+
+
+
+
 
 // I think this is for web api url caching
 //$edgCacheTable = 'ed_url_cache';
