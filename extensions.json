@@ -11,10 +11,6 @@
 		"https://gerrit.wikimedia.org/r/mediawiki/extensions/Arrays",
 		"master"
 	},
-	"Auth_remoteuser" : {
-		"",
-		"master"
-	},
 	"BatchUserRights" : {
 		"https://gerrit.wikimedia.org/r/mediawiki/extensions/BatchUserRights",
 		"master"
@@ -24,43 +20,35 @@
 		"master"
 	},
 	"Cite" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/Cite",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/Cite",
 		"master"
 	},
 	"Collection" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/Collection",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/Collection",
 		"master"
 	},
 	"ConfirmEdit" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/ConfirmEdit",
-		"master"
-	},
-	"ConfirmUsersEmail" : {
-		"",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/ConfirmEdit",
 		"master"
 	},
 	"CopyWatchers" : {
 		"https://github.com/jamesmontalvo3/MediaWiki-CopyWatchers.git",
 		"master"
 	},
-	"DataTransclusion" : {
-		"",
-		"master"
-	},
 	"DismissableSiteNotice" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/DismissableSiteNotice",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/DismissableSiteNotice",
 		"master"
 	},
 	"EditUser" : {
-		"",
+		"https://github.com/jamesmontalvo3/MediaWiki-EditUser.git",
 		"master"
 	},
 	"ExternalData" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/ExternalData",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/ExternalData",
 		"master"
 	},
 	"Gadgets" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/Gadgets",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/Gadgets",
 		"master"
 	},
 	"HeaderFooter" : {
@@ -68,59 +56,59 @@
 		"master"
 	},
 	"HeaderTabs" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/HeaderTabs",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/HeaderTabs",
 		"master"
 	},
 	"ImageMap" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/ImageMap",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/ImageMap",
 		"master"
 	},
 	"ImportUsers" : {
-		"",
+		"https://github.com/jamesmontalvo3/MediaWiki-ImportUsers.git",
 		"master"
 	},
 	"InputBox" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/InputBox",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/InputBox",
 		"master"
 	},
 	"DynamicPageList" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/intersection",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/intersection",
 		"master"
 	},
 	"Interwiki" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/Interwiki",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/Interwiki",
 		"master"
 	},
 	"LabeledSectionTransclusion" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/LabeledSectionTransclusion",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/LabeledSectionTransclusion",
 		"master"
 	},
 	"LocalisationUpdate" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/LocalisationUpdate",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/LocalisationUpdate",
 		"master"
 	},
 	"Maps" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/Maps",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/Maps",
 		"master"
 	},
 	"Nuke" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/Nuke",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/Nuke",
 		"master"
 	},
 	"ParserFunctions" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/ParserFunctions",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/ParserFunctions",
 		"master"
 	},
 	"PdfExport" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/PdfExport",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/PdfExport",
 		"master"
 	},
 	"PipeEscape" : {
-		"",
+		"https://github.com/jamesmontalvo3/MediaWiki-PipeEscape.git",
 		"master"
 	},
 	"Poem" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/Poem",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/Poem",
 		"master"
 	},
 	"rabcg" : {
@@ -128,31 +116,31 @@
 		"master"
 	},
 	"Renameuser" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/Renameuser",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/Renameuser",
 		"master"
 	},
 	"ReplaceText" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/ReplaceText",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/ReplaceText",
 		"master"
 	},
 	"Scribunto" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/Scribunto",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/Scribunto",
 		"master"
 	},
 	"SemanticCompoundQueries" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/SemanticCompoundQueries",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/SemanticCompoundQueries",
 		"master"
 	},
 	"SemanticForms" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/SemanticForms",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/SemanticForms",
 		"master"
 	},
 	"SemanticInternalObjects" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/SemanticInternalObjects",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/SemanticInternalObjects",
 		"master"
 	},
 	"SemanticMediaWiki" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/SemanticMediaWiki",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/SemanticMediaWiki",
 		"tags/1.8.0.5"
 	},
 	"SemanticResultFormats" : {
@@ -160,15 +148,11 @@
 		"tags/1.8"
 	},
 	"SpamBlacklist" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/SpamBlacklist",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/SpamBlacklist",
 		"master"
 	},
 	"StringFunctionsEscaped" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/StringFunctionsEscaped",
-		"master"
-	},
-	"StubManager" : {
-		"",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/StringFunctionsEscaped",
 		"master"
 	},
 	"SubPageList" : {
@@ -176,23 +160,23 @@
 		"master"
 	},
 	"SyntaxHighlight_GeSHi" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/SyntaxHighlight_GeSHi",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/SyntaxHighlight_GeSHi",
 		"master"
 	},
 	"TalkRight" : {
-		"",
+		"https://github.com/jamesmontalvo3/MediaWiki-TalkRight.git",
 		"master"
 	},
 	"TitleBlacklist" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/TitleBlacklist",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/TitleBlacklist",
 		"master"
 	},
 	"TitleKey" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/TitleKey",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/TitleKey",
 		"master"
 	},
 	"UploadWizard" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/UploadWizard",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/UploadWizard",
 		"master"
 	},
 	"Validator" : {
@@ -200,11 +184,11 @@
 		"tags/0.5"
 	},
 	"WhoIsWatching" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/WhoIsWatching",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/WhoIsWatching",
 		"master"
 	},
 	"WikiEditor" : {
-		"git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/WikiEditor",
+		"https://gerrit.wikimedia.org/r/mediawiki/extensions/WikiEditor",
 		"master"
 	},
 	"Wiretap" : {
