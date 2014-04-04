@@ -181,3 +181,6 @@ $wgGroupPermissions['Curator']['deletedtext'] = true; // View deleted text/chang
 #   to allow managers to give managers the ability to approve pages (lesson plans, ESOP, etc)
 #
 $wgGroupPermissions['Manager']['userrights'] = true; // Edit all user rights
+
+// Enable subpages on Main namespace
+$wgNamespacesWithSubpages[NS_MAIN] = true;
