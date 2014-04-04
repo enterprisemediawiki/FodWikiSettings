@@ -1,7 +1,7 @@
 <?php
 
 
-class JSCMOD_Extensions {
+class GitExtensionHandler {
 
 	private $extensions;
 	private $extensions_dir;
@@ -17,7 +17,7 @@ class JSCMOD_Extensions {
 			file_get_contents( __DIR__ . '/extensions.json' ),
 			true );
 
-		$this->extensions_dir = dirname(__DIR__); // get parent directory
+		$this->extensions_dir = dirname( dirname(__DIR__) ); // get parent directory's parent directory
 	
 	}
 	
@@ -47,6 +47,8 @@ class JSCMOD_Extensions {
 	
 	protected function cloneGitRepo ( $ext_name ) {
 
+		echo "\n    CLONING EXTENSION $ext_name\n";
+	
 		$ext_info = $this->extensions[$ext_name];
 	
 		// change working directory to main extensions directory
@@ -67,11 +69,15 @@ class JSCMOD_Extensions {
 	
 	protected function checkExtensionForUpdates ( $ext_name ) {
 	
+		echo "\n    Checking for updates in $ext_name\n";
+	
 		$ext_info = $this->extensions[$ext_name];
 		$ext_dir = "{$this->extensions_dir}/$ext_name";
 		
-		if ( ! is_dir("$ext_dir/.git") )
-			return false;
+		if ( ! is_dir("$ext_dir/.git") ) {
+			echo "\nNot a git repository! ($ext_name)";
+			return false;	
+		}
 		
 		// change working directory to main extensions directory
 		chdir( $ext_dir );
@@ -83,7 +89,8 @@ class JSCMOD_Extensions {
 		$fetched_sha1 = shell_exec( "git rev-parse --verify {$ext_info['checkout']}" );
 		
 		if ($current_sha1 !== $fetched_sha1) {
-			echo "\nCurrent commit: $current_sha1\nChecking out new commit: $fetched_sha1";
+			echo "\nCurrent commit: $current_sha1";
+			echo "\nChecking out new commit: $fetched_sha1\n";
 			echo shell_exec( "git checkout {$ext_info['checkout']}" );
 		}
 		else {
