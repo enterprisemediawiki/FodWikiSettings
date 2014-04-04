@@ -12,7 +12,7 @@ if ( $egJSCMOD_debug ) {
 	ini_set("log_errors", 1);
 	
 	// Output errors to log file
-	ini_set("error_log", "$egJSCMOD_FileSystemPath/$egJSCMOD_GroupName/extensions/JSCMOD/php.log");
+	ini_set("error_log", dirname( __FILE__ ). "/php.log");
 
 	// MediaWiki Debug Tools
 	$wgShowExceptionDetails = true;
@@ -56,9 +56,14 @@ function addJSCMODjavascript( $out ){
 	global $wgScriptPath;
 	// $out->addScriptFile( $wgScriptPath .'/resources/session.min.js' );
 	$out->addScriptFile( $wgScriptPath .'/extensions/JSCMOD/script.js' );
-	$out->addScriptFile( $wgScriptPath .'/extensions/JSCMOD/Masonry/masonry.pkgd.min.js' );
-	$out->addScriptFile( $wgScriptPath .'/extensions/JSCMOD/Masonry/masonry-common.js' );
 
+	$out->addLink( array(
+		'rel' => 'stylesheet',
+		'type' => 'text/css',
+		'media' => "screen",
+		'href' => "$wgScriptPath/extensions/JSCMOD/JSCMOD.css"
+	) );
+	
 	return true;
 }
 
