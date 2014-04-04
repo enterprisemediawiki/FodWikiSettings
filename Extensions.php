@@ -82,8 +82,7 @@ if ( ! $egJSCMOD_local_auth ) {
 	$wgAuthRemoteuserDeniedPage = "Access_Denied"; // redirect non-viewers to this page (namespace below)
 	$wgAuthRemoteuserDeniedNS = NS_PROJECT; // redirect non-viewers to page in this namespace
 
-
-	require_once "$egJSCMOD_extensionsPath/Auth_remoteuser/Auth_remoteuser.php";
+	require_once dirname(__FILE__) . "/Auth_remoteuser.php";
 	$wgAuth = new Auth_remoteuser();
 	// see extension JSCMOD for auth settings
 
