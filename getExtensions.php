@@ -20,32 +20,6 @@ class JSCMOD_Extensions {
 		$this->extensions_dir = dirname(__DIR__); // get parent directory
 	
 	}
-
-	public function getExtensions () {
-				
-		foreach( $this->extensions as $ext_name => $ext_info ) {
-
-			if ( ! $this->isExtensionEnabled( $ext_info ) ) {
-				continue;
-			}
-		
-			// change working directory to main extensions directory
-			chdir( $this->extensions_dir );
-			
-			// git clone into directory named the same as the extension
-			echo shell_exec( "git clone {$ext_info['origin']} $ext_name" );
-			
-			if ( $ext_info['checkout'] !== 'master' ) {
-			
-				chdir( "$extensions_dir/$ext_name" );
-			
-				echo shell_exec( "git checkout " . $ext_info['checkout'] ); 
-			
-			}
-						
-		}
-		
-	}
 	
 	// initiates or updates extensions
 	// does not delete extensions if they're disabled
