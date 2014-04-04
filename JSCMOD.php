@@ -1,5 +1,8 @@
 <?php
 
+if ( ! isset($egJSCMOD_independentExtensions) )
+	$egJSCMOD_independentExtensions = false;
+
 // development: error reporting
 if ( $egJSCMOD_debug ) {
 
@@ -53,10 +56,16 @@ function addJSCMODjavascript( $out ){
 	global $wgScriptPath;
 	// $out->addScriptFile( $wgScriptPath .'/resources/session.min.js' );
 	$out->addScriptFile( $wgScriptPath .'/extensions/JSCMOD/script.js' );
+	$out->addScriptFile( $wgScriptPath .'/extensions/JSCMOD/Masonry/masonry.pkgd.min.js' );
+	$out->addScriptFile( $wgScriptPath .'/extensions/JSCMOD/Masonry/masonry-common.js' );
 
 	return true;
 }
 
+
+if ($egJSCMOD_manageExtensions) {
+	require_once dirname( __FILE__ ) . "/Extensions.php";
+}
 
 ## The following included script gets programmatically modified 
 ## during backup operations to set read-only prior to backup and
