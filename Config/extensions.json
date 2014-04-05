@@ -1,4 +1,13 @@
 {
+	"Validator" : {
+		"origin" : "https://github.com/JeroenDeDauw/Validator.git",
+		"checkout" : "tags/0.5"
+	},
+	"SemanticMediaWiki" : {
+		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/SemanticMediaWiki",
+		"checkout" : "tags/1.8.0.5",
+		"callback" : "JSCMOD_Extensions::SMW_Setup"
+	},
 	"AdminLinks" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/AdminLinks",
 		"checkout" : "master"
@@ -25,11 +34,13 @@
 	},
 	"Collection" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/Collection",
-		"checkout" : "master"
+		"checkout" : "master",
+		"enable" : false
 	},
 	"ConfirmEdit" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/ConfirmEdit",
-		"checkout" : "master"
+		"checkout" : "master",
+		"enable" : false
 	},
 	"CopyWatchers" : {
 		"origin" : "https://github.com/jamesmontalvo3/MediaWiki-CopyWatchers.git",
@@ -41,7 +52,8 @@
 	},
 	"EditUser" : {
 		"origin" : "https://github.com/jamesmontalvo3/MediaWiki-EditUser.git",
-		"checkout" : "master"
+		"checkout" : "master",
+		"enable" : false
 	},
 	"ExternalData" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/ExternalData",
@@ -49,7 +61,8 @@
 	},
 	"Gadgets" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/Gadgets",
-		"checkout" : "master"
+		"checkout" : "master",
+		"enable" : false
 	},
 	"HeaderFooter" : {
 		"origin" : "https://github.com/jamesmontalvo3/MediaWiki-HeaderFooter.git",
@@ -61,7 +74,8 @@
 	},
 	"ImageMap" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/ImageMap",
-		"checkout" : "master"
+		"checkout" : "master",
+		"enable" : false
 	},
 	"ImportUsers" : {
 		"origin" : "https://github.com/jamesmontalvo3/MediaWiki-ImportUsers.git",
@@ -85,7 +99,8 @@
 	},
 	"LocalisationUpdate" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/LocalisationUpdate",
-		"checkout" : "master"
+		"checkout" : "master",
+		"enable" : false
 	},
 	"Maps" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/Maps",
@@ -93,7 +108,13 @@
 	},
 	"Nuke" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/Nuke",
-		"checkout" : "master"
+		"checkout" : "master",
+		"enable" : false
+	},
+	"PageTriage" : {
+		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/PageTriage",
+		"checkout" : "master",
+		"enable" : "dev"
 	},
 	"ParserFunctions" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/ParserFunctions",
@@ -101,7 +122,8 @@
 	},
 	"PdfExport" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/PdfExport",
-		"checkout" : "master"
+		"checkout" : "master",
+		"enable" : false
 	},
 	"PipeEscape" : {
 		"origin" : "https://github.com/jamesmontalvo3/MediaWiki-PipeEscape.git",
@@ -109,15 +131,17 @@
 	},
 	"Poem" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/Poem",
-		"checkout" : "master"
+		"checkout" : "master",
+		"enable" : false
 	},
-	"rabcg" : {
-		"origin" : "",
+	"RABCG" : {
+		"origin" : "https://github.com/jamesmontalvo3/MediaWiki-RABCG.git",
 		"checkout" : "master"
 	},
 	"Renameuser" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/Renameuser",
-		"checkout" : "master"
+		"checkout" : "master",
+		"enable" : false
 	},
 	"ReplaceText" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/ReplaceText",
@@ -125,7 +149,8 @@
 	},
 	"Scribunto" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/Scribunto",
-		"checkout" : "master"
+		"checkout" : "master",
+		"enable" : "dev"
 	},
 	"SemanticCompoundQueries" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/SemanticCompoundQueries",
@@ -139,24 +164,17 @@
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/SemanticInternalObjects",
 		"checkout" : "master"
 	},
-	"SemanticMediaWiki" : {
-		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/SemanticMediaWiki",
-		"checkout" : "tags/1.8.0.5"
-	},
 	"SemanticResultFormats" : {
 		"origin" : "https://github.com/SemanticMediaWiki/SemanticResultFormats.git",
 		"checkout" : "tags/1.8"
 	},
 	"SpamBlacklist" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/SpamBlacklist",
-		"checkout" : "master"
+		"checkout" : "master",
+		"enable" : false
 	},
 	"StringFunctionsEscaped" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/StringFunctionsEscaped",
-		"checkout" : "master"
-	},
-	"SubPageList" : {
-		"origin" : "https://github.com/JeroenDeDauw/SubPageList.git",
 		"checkout" : "master"
 	},
 	"SyntaxHighlight_GeSHi" : {
@@ -169,7 +187,8 @@
 	},
 	"TitleBlacklist" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/TitleBlacklist",
-		"checkout" : "master"
+		"checkout" : "master",
+		"enable" : false
 	},
 	"TitleKey" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/TitleKey",
@@ -177,11 +196,9 @@
 	},
 	"UploadWizard" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/UploadWizard",
-		"checkout" : "master"
-	},
-	"Validator" : {
-		"origin" : "https://github.com/JeroenDeDauw/Validator.git",
-		"checkout" : "tags/0.5"
+		"checkout" : "master",
+		"enable" : "dev",
+		"callback" : "UploadWizard_Setup"
 	},
 	"WhoIsWatching" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/WhoIsWatching",

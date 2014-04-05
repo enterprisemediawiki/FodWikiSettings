@@ -118,50 +118,20 @@ $wgUseNPPatrol = true;
 #
 #	AUTH SETTINGS
 #
-
-// set local based on old way of setting local for backwards compatibility
-if ( isset($egJSCMOD_local_auth) ) {
-	$egJSCMOD_auth_type = 'local_dev';
-}
-
-$egJSCMOD_auth_type_array = array(
-	'local_dev',
-	'ndc_closed',
-	'ndc_openview',
-	'ndc_open',	
-);
-
-
-if ( ! isset($egJSCMOD_auth_type) ) {
-	throw new MWException( 'Use of Extension:JSCMOD requires $egJSCMOD_auth_type be set.' );
-	$egJSCMOD_auth_type = 'error';
-} else if ( ! in_array($egJSCMOD_auth_type, $egJSCMOD_auth_type_array) ) {
-	throw new MWException( 'Unsupported $egJSCMOD_auth_type set. See Extension:JSCMOD.' ); 
-	$egJSCMOD_auth_type = 'error';
-}
-
 // get authentication settings
-require_once dirname( __FILE__ ) . "/Auth/settings_$egJSCMOD_auth_type.php";
+JSCMOD::requireAuthSettings( $egJSCMOD_auth_type );
 
-
-if ($egJSCMOD_auth_type == 'ndc_closed') {
-	// Auth_remoteuser extension, updated by James Montalvo, blocks remote users not
-	// part of the group defined by $wgAuthRemoteuserViewerGroup
-	$wgAuthRemoteuserViewerGroup = "Viewer"; // set to false to allow all valid REMOTE_USER to view; set to group name to restrict viewing to particular group
-	$wgAuthRemoteuserDeniedPage = "Access_Denied"; // redirect non-viewers to this page (namespace below)
-	$wgAuthRemoteuserDeniedNS = NS_PROJECT; // redirect non-viewers to page in this namespace
-}
 
 if ($egJSCMOD_auth_type != 'local_dev') {
 
 	# any NDC
-	require_once dirname( __FILE__ ) . "/Auth/Auth.php";
+	require_once JSCMOD::getExtensionIP() . "/Includes/Auth.php";
 	$wgAuth = new Auth_remoteuser();
 
 	// This is not an auth-setting, but is specific to MOD server configuration
 	// On MOD servers can't access the desired "C:\\Windows\TEMP" directory so this location
 	// was setup. Alternatively could have used the $IP/images directory, I think.
-	$wgTmpDirectory     = "d:\PHP\uploadtemp";
+	$wgTmpDirectory = "d:\PHP\uploadtemp";
 	// Note: There is no corresponding value for local auth, since most people
 	// can use whatever the default is, or will have to set it explicitly
 }

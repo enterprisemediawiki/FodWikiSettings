@@ -2,6 +2,12 @@
 
 require_once dirname( __FILE__ ) . '/settings_ndc_all.php';
 
+// Auth_remoteuser extension, updated by James Montalvo, blocks remote users
+// who are not part of the group defined by $wgAuthRemoteuserViewerGroup
+$wgAuthRemoteuserViewerGroup = "Viewer"; // set to false to allow all valid REMOTE_USER to view; set to group name to restrict viewing to particular group
+$wgAuthRemoteuserDeniedPage = "Access_Denied"; // redirect non-viewers to this page (namespace below)
+$wgAuthRemoteuserDeniedNS = NS_PROJECT; // redirect non-viewers to page in this namespace
+
 
 $wgGroupPermissions['user']['talk'] = true; 
 $wgGroupPermissions['user']['read'] = true;

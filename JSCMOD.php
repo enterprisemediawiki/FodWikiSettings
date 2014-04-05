@@ -1,5 +1,8 @@
 <?php
 
+require_once "Includes/JSCMOD.body.php";
+$extensionIP = JSCMOD::setExtensionIP( __DIR__ );
+
 if ( ! isset($egJSCMOD_independentExtensions) )
 	$egJSCMOD_independentExtensions = false;
 
@@ -43,38 +46,24 @@ $wgStylePath        = "$wgScriptPath/skins";
 
 ## The relative URL path to the logo.  Make sure you change this from the default,
 ## or else you'll overwrite your logo when you upgrade!
-$wgLogo             = "$wgScriptPath/extensions/JSCMOD/Groups/$egJSCMOD_GroupName/logo.png";
-$wgFavicon          = "$wgScriptPath/extensions/JSCMOD/Groups/$egJSCMOD_GroupName/favicon.ico";
-$wgAppleTouchIcon   = "$wgScriptPath/extensions/JSCMOD/Groups/$egJSCMOD_GroupName/apple-touch-icon.png";
+$wgLogo             = "$extensionIP/Groups/$egJSCMOD_GroupName/logo.png";
+$wgFavicon          = "$extensionIP/Groups/$egJSCMOD_GroupName/favicon.ico";
+$wgAppleTouchIcon   = "$extensionIP/Groups/$egJSCMOD_GroupName/apple-touch-icon.png";
 
 
 /**
  *  JSC-MOD specific javascript modifications
  **/
-$wgHooks['AjaxAddScript'][] = 'addJSCMODjavascript';
-function addJSCMODjavascript( $out ){
-	global $wgScriptPath;
-	// $out->addScriptFile( $wgScriptPath .'/resources/session.min.js' );
-	$out->addScriptFile( $wgScriptPath .'/extensions/JSCMOD/script.js' );
-
-	$out->addLink( array(
-		'rel' => 'stylesheet',
-		'type' => 'text/css',
-		'media' => "screen",
-		'href' => "$wgScriptPath/extensions/JSCMOD/JSCMOD.css"
-	) );
-	
-	return true;
-}
+$wgHooks['AjaxAddScript'][] = 'JSCMOD::addJSandCSS';
 
 
 if ($egJSCMOD_manageExtensions) {
-	require_once dirname( __FILE__ ) . "/Extensions.php";
+	require_once "$extensionIP/Config/Extensions.php";
 }
 
 ## The following included script gets programmatically modified 
 ## during backup operations to set read-only prior to backup and
 ## unset when backup is complete
-include "$IP/extensions/JSCMOD/wgReadOnly.php";
+include "$extensionIP/Config/wgReadOnly.php";
 
-require_once dirname( __FILE__ ) . "/DefaultSettings.php";
+require_once "$extensionIP/Config/DefaultSettings.php";

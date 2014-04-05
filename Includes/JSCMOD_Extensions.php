@@ -1,10 +1,10 @@
 <?php
 
 
-class GitExtensionHandler {
+class JSCMOD_Extensions {
 
 	private $extensions;
-	private $extensions_dir;
+	public $extensions_dir;
 
 	public function __construct ( $is_dev=false ) {
 	
@@ -27,7 +27,7 @@ class GitExtensionHandler {
 				
 		foreach( $this->extensions as $ext_name => $ext_info ) {
 
-			if ( ! $this->isExtensionEnabled( $ext_info ) ) {
+			if ( ! $this->isExtensionEnabled( $ext_name ) ) {
 				continue;
 			}
 			
@@ -101,13 +101,44 @@ class GitExtensionHandler {
 	
 	}
 	
-	protected function isExtensionEnabled ( $ext_info ) {
+	protected function isExtensionEnabled ( $ext_name ) {
+		$ext_info = $this->extensions[$ext_name];
+		
 		if ( ! isset($ext_info["enable"]) || $ext_info["enable"] == true )
 			return true; // default enabled
 		else if ( $this->is_dev_environment && $ext_info["enable"] == "dev"  )
 			return true;
 		else
 			return false;
+	}
+
+	public function loadExtensions () {
+		
+		foreach( $this->extensions as $ext_name => $ext_info ) {
+
+			if ( ! $this->isExtensionEnabled( $ext_name ) ) {
+				continue;
+			}
+
+			require_once "{$this->extensions_dir}/$ext_name/$ext_name.php";
+			
+			if ( isset($ext_info['callback']) )
+				call_user_function( $ext_info['callback'] );
+		}
+			
+	}
+	
+	static public function SMW_Setup () {
+		global $egJSCMOD_GroupName;
+		enableSemantics("$egJSCMOD_GroupName.MOD.JSC.NASA.GOV"); #FIXME
+	}
+	
+	static public function UploadWizard_Setup () {
+		global $wgExtensionFunctions;
+		$wgExtensionFunctions[] = function() {
+			$GLOBALS['wgUploadNavigationUrl'] = SpecialPage::getTitleFor( 'UploadWizard' )->getLocalURL();
+			return true;
+		};
 	}
 	
 }
