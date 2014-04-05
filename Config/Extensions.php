@@ -7,10 +7,21 @@
 	// $wgExtensionAssetsPath = "/wiki/extensions";
 	// $egJSCMOD_extensionsPath = "$IP/../extensions";
 // }
-
+require_once __DIR__ . '/../Includes/JSCMOD_Extensions.php';
 $ext = new JSCMOD_Extensions();
 
-$ext->loadExtensions();
+require_once __DIR__ . '/../../Validator/Validator.php';
+
+
+
+foreach ( $ext->getEnabledExtensions() as $ext_name => $ext_info ) {
+
+	require_once $ext->extensions_dir . "/$ext_name/$ext_name.php";
+
+	if ( isset($ext_info['callback']) )
+		call_user_func( $ext_info['callback'] );
+
+}
 
 
 // ParserFunctions

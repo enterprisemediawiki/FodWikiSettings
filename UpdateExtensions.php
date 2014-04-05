@@ -1,7 +1,7 @@
 <?php
 
-require_once "GitExtensionHandler.php";
+require_once "Includes/JSCMOD_Extensions.php";
 
-$geh = new GitExtensionHandler();
+$ext = new JSCMOD_Extensions();
 
-$geh->updateExtensions();
+$ext->updateExtensions();

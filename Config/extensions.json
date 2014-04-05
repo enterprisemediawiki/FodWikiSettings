@@ -1,7 +1,8 @@
 {
 	"Validator" : {
 		"origin" : "https://github.com/JeroenDeDauw/Validator.git",
-		"checkout" : "tags/0.5"
+		"checkout" : "tags/0.5",
+		"enable" : false
 	},
 	"SemanticMediaWiki" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/SemanticMediaWiki",
@@ -104,7 +105,8 @@
 	},
 	"Maps" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/Maps",
-		"checkout" : "master"
+		"checkout" : "master",
+		"enable" : false
 	},
 	"Nuke" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/Nuke",
@@ -198,7 +200,7 @@
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/UploadWizard",
 		"checkout" : "master",
 		"enable" : "dev",
-		"callback" : "UploadWizard_Setup"
+		"callback" : "JSCMOD_Extensions::UploadWizard_Setup"
 	},
 	"WhoIsWatching" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/WhoIsWatching",

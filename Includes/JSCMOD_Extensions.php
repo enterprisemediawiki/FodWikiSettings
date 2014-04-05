@@ -14,8 +14,9 @@ class JSCMOD_Extensions {
 			$this->is_dev_environment = false;
 	
 		$this->extensions = json_decode( 
-			file_get_contents( __DIR__ . '/extensions.json' ),
-			true );
+			file_get_contents( __DIR__ . '/../Config/extensions.json' ),
+			true
+		);
 
 		$this->extensions_dir = dirname( dirname(__DIR__) ); // get parent directory's parent directory
 	
@@ -59,7 +60,7 @@ class JSCMOD_Extensions {
 		
 		if ( $ext_info['checkout'] !== 'master' ) {
 		
-			chdir( "$extensions_dir/$ext_name" );
+			chdir( "{$this->extensions_dir}/$ext_name" );
 		
 			echo shell_exec( "git checkout " . $ext_info['checkout'] ); 
 		
@@ -113,7 +114,7 @@ class JSCMOD_Extensions {
 	}
 
 	public function loadExtensions () {
-		
+		global $wgVersion;
 		foreach( $this->extensions as $ext_name => $ext_info ) {
 
 			if ( ! $this->isExtensionEnabled( $ext_name ) ) {
@@ -126,6 +127,21 @@ class JSCMOD_Extensions {
 				call_user_function( $ext_info['callback'] );
 		}
 			
+	}
+	
+	public function getEnabledExtensions () {
+	
+		$out = array();
+		
+		foreach ( $this->extensions as $ext_name => $ext_info ) {
+		
+			if ( $this->isExtensionEnabled($ext_name) )
+				$out[$ext_name] = $ext_info;
+		
+		}
+		
+		return $out;
+	
 	}
 	
 	static public function SMW_Setup () {

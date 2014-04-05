@@ -57,9 +57,7 @@ $wgAppleTouchIcon   = "$extensionIP/Groups/$egJSCMOD_GroupName/apple-touch-icon.
 $wgHooks['AjaxAddScript'][] = 'JSCMOD::addJSandCSS';
 
 
-if ($egJSCMOD_manageExtensions) {
-	require_once "$extensionIP/Config/Extensions.php";
-}
+require_once "$extensionIP/Config/Extensions.php";
 
 ## The following included script gets programmatically modified 
 ## during backup operations to set read-only prior to backup and
