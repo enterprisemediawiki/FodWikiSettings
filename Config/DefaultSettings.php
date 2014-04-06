@@ -2,8 +2,9 @@
 
 $wgRCShowWatchingUsers = true; // shows number of watchers in recent changes
 // $wgAjaxUploadDestCheck = true; // AJAX check for file overwrite pre-upload
-// $wgPageShowWatchingUsers = true; // show number watching users on bottom of page...turn this on if not using WhoIsWatching
 
+// certain aspects of the JSCMOD install require title=? in query string
+$wgUsePathInfo = false;
 
 $wgEnotifUserTalk      = true; # UPO
 $wgEnotifWatchlist     = true; # UPO

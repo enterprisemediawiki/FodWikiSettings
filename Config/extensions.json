@@ -1,8 +1,7 @@
 {
 	"Validator" : {
 		"origin" : "https://github.com/JeroenDeDauw/Validator.git",
-		"checkout" : "tags/0.5",
-		"enable" : false
+		"checkout" : "tags/0.5"
 	},
 	"SemanticMediaWiki" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/SemanticMediaWiki",
@@ -152,7 +151,7 @@
 	"Scribunto" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/Scribunto",
 		"checkout" : "master",
-		"enable" : "dev"
+		"enable" : false
 	},
 	"SemanticCompoundQueries" : {
 		"origin" : "https://gerrit.wikimedia.org/r/mediawiki/extensions/SemanticCompoundQueries",

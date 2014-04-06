@@ -1,19 +1,10 @@
 <?php
 
-// if ($egJSCMOD_independentExtensions) {
-	// $egJSCMOD_extensionsPath = "$IP/extensions";
-// } 
-// else {
-	// $wgExtensionAssetsPath = "/wiki/extensions";
-	// $egJSCMOD_extensionsPath = "$IP/../extensions";
-// }
 require_once __DIR__ . '/../Includes/JSCMOD_Extensions.php';
-$ext = new JSCMOD_Extensions();
-
-require_once __DIR__ . '/../../Validator/Validator.php';
+$ext = new JSCMOD_Extensions( true );
 
 
-
+// load extensions based on whether they're enabled in extensions.json
 foreach ( $ext->getEnabledExtensions() as $ext_name => $ext_info ) {
 
 	require_once $ext->extensions_dir . "/$ext_name/$ext_name.php";

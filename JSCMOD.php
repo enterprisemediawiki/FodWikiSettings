@@ -3,19 +3,16 @@
 require_once "Includes/JSCMOD.body.php";
 $extensionIP = JSCMOD::setExtensionIP( __DIR__ );
 
-if ( ! isset($egJSCMOD_independentExtensions) )
-	$egJSCMOD_independentExtensions = false;
-
 // development: error reporting
 if ( $egJSCMOD_debug ) {
 
 	// turn error logging on
 	error_reporting( -1 );
 	ini_set( 'display_errors', 1 );
-	ini_set("log_errors", 1);
+	ini_set( 'log_errors', 1 );
 	
 	// Output errors to log file
-	ini_set("error_log", dirname( __FILE__ ). "/php.log");
+	ini_set( 'error_log', __DIR__ . '/php.log' );
 
 	// MediaWiki Debug Tools
 	$wgShowExceptionDetails = true;
@@ -46,9 +43,9 @@ $wgStylePath        = "$wgScriptPath/skins";
 
 ## The relative URL path to the logo.  Make sure you change this from the default,
 ## or else you'll overwrite your logo when you upgrade!
-$wgLogo             = "$extensionIP/Groups/$egJSCMOD_GroupName/logo.png";
-$wgFavicon          = "$extensionIP/Groups/$egJSCMOD_GroupName/favicon.ico";
-$wgAppleTouchIcon   = "$extensionIP/Groups/$egJSCMOD_GroupName/apple-touch-icon.png";
+$wgLogo             = "$wgScriptPath/extensions/JSCMOD/Groups/$egJSCMOD_GroupName/logo.png";
+$wgFavicon          = "$wgScriptPath/extensions/JSCMOD/Groups/$egJSCMOD_GroupName/favicon.ico";
+$wgAppleTouchIcon   = "$wgScriptPath/extensions/JSCMOD/Groups/$egJSCMOD_GroupName/apple-touch-icon.png";
 
 
 /**

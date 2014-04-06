@@ -105,8 +105,8 @@ class JSCMOD_Extensions {
 	protected function isExtensionEnabled ( $ext_name ) {
 		$ext_info = $this->extensions[$ext_name];
 		
-		if ( ! isset($ext_info["enable"]) || $ext_info["enable"] == true )
-			return true; // default enabled
+		if ( ! isset($ext_info["enable"]) || $ext_info["enable"] === true )
+			return true; // enabled if no mention, or if explicitly set to true
 		else if ( $this->is_dev_environment && $ext_info["enable"] == "dev"  )
 			return true;
 		else
