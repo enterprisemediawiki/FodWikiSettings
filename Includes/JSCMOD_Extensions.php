@@ -145,8 +145,8 @@ class JSCMOD_Extensions {
 	}
 	
 	static public function SMW_Setup () {
-		global $egJSCMOD_GroupName;
-		enableSemantics("$egJSCMOD_GroupName.MOD.JSC.NASA.GOV"); #FIXME
+		global $egJSCMOD_GroupPathName;
+		enableSemantics("$egJSCMOD_GroupPathName.MOD.JSC.NASA.GOV"); #FIXME
 	}
 	
 	static public function UploadWizard_Setup () {
