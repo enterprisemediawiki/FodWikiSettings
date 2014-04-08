@@ -43,7 +43,7 @@ $wgBatchUserRightsGrantableGroups = array(
 );
 
 // SemanticResultFormats
-$srfgFormats = array('calendar', 'timeline', 'exhibit', 'eventline', 'tree', 'oltree', 'ultree');
+$srfgFormats = array('calendar', 'timeline', 'exhibit', 'eventline', 'tree', 'oltree', 'ultree', 'sum');
 
 // HeaderTabs
 $htEditTabLink = false;
