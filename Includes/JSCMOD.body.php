@@ -4,15 +4,6 @@ class JSCMOD {
 
 	static public $IP;
 
-	static public function setExtensionIP ($path) {
-		self::$IP = $path;
-		return $path;
-	}
-	
-	static public function getExtensionIP () {
-		return self::$IP;
-	}
-
 	static public function requireAuthSettings ( $auth_type=false ) {
 
 		$auth_types = array(
@@ -32,7 +23,7 @@ class JSCMOD {
 			$egJSCMOD_auth_type = 'error';
 		}
 
-		require_once self::getExtensionIP() . "/Config/Auth/settings_$auth_type.php";
+		require_once $GLOBALS['egJSCMOD_install_path'] . "/Includes/Auth/settings_$auth_type.php";
 	}
 	
 	static public function addJSandCSS ( $out ) {
@@ -50,9 +41,4 @@ class JSCMOD {
 		return true;
 	}
 	
-	static public function loadExtension ( $ext_name ) {
-	
-		
-	
-	}
 }

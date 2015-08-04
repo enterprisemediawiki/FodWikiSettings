@@ -1,6 +1,5 @@
 <?php
 
-
 $egJSCMOD_GroupPathName = str_replace(' ','',$egJSCMOD_GroupName);
 
 $wgSitename = $egJSCMOD_GroupName . ' Wiki';
@@ -9,10 +8,8 @@ $wgMetaNamespace = str_replace(' ','_',$wgSitename);
 $wgEmergencyContact = str_replace(' ','-',$wgSitename) . '-Wiki@mod2.jsc.nasa.gov';
 $wgPasswordSender = $wgEmergencyContact;
 
-
-
 require_once "Includes/JSCMOD.body.php";
-$extensionIP = JSCMOD::setExtensionIP( __DIR__ );
+$egJSCMOD_install_path = __DIR__;
 
 // development: error reporting
 if ( $egJSCMOD_debug ) {
@@ -40,6 +37,9 @@ else {
 
 }
 
+## JSC FOD Wikis use mysql
+$wgDBtype = "mysql";
+
 ## The URL base path to the directory containing the wiki;
 ## defaults for all runtime URL paths are based off of this.
 ## For more information on customizing the URLs please see:
@@ -65,11 +65,9 @@ $wgAppleTouchIcon   = "$wgScriptPath/extensions/JSCMOD/Groups/$egJSCMOD_GroupPat
 $wgHooks['AjaxAddScript'][] = 'JSCMOD::addJSandCSS';
 
 
-require_once "$extensionIP/Config/Extensions.php";
-
 ## The following included script gets programmatically modified 
 ## during backup operations to set read-only prior to backup and
 ## unset when backup is complete
-include "$extensionIP/Config/wgReadOnly.php";
+include "$egJSCMOD_install_path/Includes/wgReadOnly.php";
 
-require_once "$extensionIP/Config/DefaultSettings.php";
+require_once "$egJSCMOD_install_path/DefaultSettings.php";

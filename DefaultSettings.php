@@ -54,6 +54,9 @@ $wgTrustedMediaFormats[] = "application/vnd.openxmlformats-officedocument.wordpr
 $wgTrustedMediaFormats[] = "application/vnd.openxmlformats-officedocument.presentationml.presentation";
 $wgTrustedMediaFormats[] = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
+// to support local (UNC) links
+$wgUrlProtocols[] = "file://";
+
 // James Montalvo added this line, which is not normally present in LocalSettings.php.
 // Removed from this list are "application/msword", "application/vnd.ms-powerpoint", "application/vnd.msexcel"
 $wgMimeTypeBlacklist = array ( "text/html", "text/javascript", "text/x-javascript", "application/x-shellscript", "application/x-php", "text/x-php", 
@@ -126,7 +129,7 @@ JSCMOD::requireAuthSettings( $egJSCMOD_auth_type );
 if ($egJSCMOD_auth_type != 'local_dev') {
 
 	# any NDC
-	require_once JSCMOD::getExtensionIP() . "/Includes/Auth.php";
+	require_once $GLOBALS['egJSCMOD_install_path'] . "/Includes/Auth.php";
 	$wgAuth = new Auth_remoteuser();
 
 	// This is not an auth-setting, but is specific to MOD server configuration
