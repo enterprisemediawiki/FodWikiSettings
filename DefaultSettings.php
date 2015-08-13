@@ -95,13 +95,10 @@ $wgDefaultSkin = "vector";
 
 
 # Path to the GNU diff3 utility. Used for conflict resolution.
-$wgDiff3 = 'C:/Program Files (x86)/GnuWin32/bin/diff3.exe';
+$wgDiff3 = 'D:/Support/diffutils-3.3/bin/diff3.exe';
 
-# Path to the GNU diff3 utility. Used for conflict resolution.
-// $wgDiff3 = "C:/Program Files (x86)/GnuWin/bin/diff3.exe";
 # Use external mime detector
 // $wgMimeDetectorCommand = "C:/Program Files (x86)/GnuWin/bin/file.exe -bi";
-
 
 # Query string length limit for ResourceLoader. You should only set this if
 # your web server has a query string length limit (then set it to that limit),
@@ -135,7 +132,7 @@ if ($egJSCMOD_auth_type != 'local_dev') {
 	// This is not an auth-setting, but is specific to MOD server configuration
 	// On MOD servers can't access the desired "C:\\Windows\TEMP" directory so this location
 	// was setup. Alternatively could have used the $IP/images directory, I think.
-	$wgTmpDirectory = "d:\PHP\uploadtemp";
+	$wgTmpDirectory = 'd:\Support\php\uploadtemp';
 	// Note: There is no corresponding value for local auth, since most people
 	// can use whatever the default is, or will have to set it explicitly
 }
