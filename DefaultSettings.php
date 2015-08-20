@@ -95,7 +95,9 @@ $wgDefaultSkin = "vector";
 
 
 # Path to the GNU diff3 utility. Used for conflict resolution.
-$wgDiff3 = 'D:/Support/diffutils-3.3/bin/diff3.exe';
+// $wgDiff3 = 'D:/Support/diffutils-3.3/bin/diff3.exe';
+$wgDiff3 = 'D:/inetpub/wwwroot/PHP/Wiki/bin/GnuWin32/bin/diff3.exe';
+
 
 # Use external mime detector
 // $wgMimeDetectorCommand = "C:/Program Files (x86)/GnuWin/bin/file.exe -bi";
@@ -129,13 +131,15 @@ if ($egJSCMOD_auth_type != 'local_dev') {
 	require_once $GLOBALS['egJSCMOD_install_path'] . "/Includes/Auth.php";
 	$wgAuth = new Auth_remoteuser();
 
-	// This is not an auth-setting, but is specific to MOD server configuration
-	// On MOD servers can't access the desired "C:\\Windows\TEMP" directory so this location
-	// was setup. Alternatively could have used the $IP/images directory, I think.
-	$wgTmpDirectory = 'd:\Support\php\uploadtemp';
-	// Note: There is no corresponding value for local auth, since most people
-	// can use whatever the default is, or will have to set it explicitly
 }
+
+if ( file_exists( 'd:\Support\php\uploadtemp' ) ) {
+
+	// On FOD servers can't access the desired "C:\\Windows\TEMP" directory so
+	// this location was setup.
+	$wgTmpDirectory = 'd:\Support\php\uploadtemp';
+}
+
 
 // Enable subpages on Main namespace
 $wgNamespacesWithSubpages[NS_MAIN] = true;
