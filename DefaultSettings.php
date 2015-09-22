@@ -59,8 +59,8 @@ $wgUrlProtocols[] = "file://";
 
 // James Montalvo added this line, which is not normally present in LocalSettings.php.
 // Removed from this list are "application/msword", "application/vnd.ms-powerpoint", "application/vnd.msexcel"
-$wgMimeTypeBlacklist = array ( "text/html", "text/javascript", "text/x-javascript", "application/x-shellscript", "application/x-php", "text/x-php", 
-	"text/x-python", "text/x-perl", "text/x-bash", "text/x-sh", "text/x-csh", "text/scriptlet", "application/x-msdownload", "application/x-msmetafile", 
+$wgMimeTypeBlacklist = array ( "text/html", "text/javascript", "text/x-javascript", "application/x-shellscript", "application/x-php", "text/x-php",
+	"text/x-python", "text/x-perl", "text/x-bash", "text/x-sh", "text/x-csh", "text/scriptlet", "application/x-msdownload", "application/x-msmetafile",
 	"application/x-opc+zip");
 
 # InstantCommons allows wiki to use images from http://commons.wikimedia.org
@@ -95,8 +95,8 @@ $wgDefaultSkin = "vector";
 
 
 # Path to the GNU diff3 utility. Used for conflict resolution.
-// $wgDiff3 = 'D:/Support/diffutils-3.3/bin/diff3.exe';
-$wgDiff3 = 'D:/inetpub/wwwroot/PHP/Wiki/bin/GnuWin32/bin/diff3.exe';
+$wgDiff3 = 'D:/Support/diffutils-3.3/bin/diff3.exe';
+// $wgDiff3 = 'D:/inetpub/wwwroot/PHP/Wiki/bin/GnuWin32/bin/diff3.exe';
 
 
 # Use external mime detector
@@ -187,7 +187,33 @@ $wgLocaltimezone = "America/Chicago";
 $oldtz = getenv("TZ");
 putenv("TZ=$wgLocaltimezone");
 
-$wgMaxUploadSize = 1024*1024*30;
+$wgMaxUploadSize = 1024*1024*40;
 //$wgUploadSizeWarning = 1024*1024*100;
 
+// disallow "+" in file names since IIS can't handle it
+$wgIllegalFileChars = ":+";
+
 $wgMaxTocLevel = 3;
+
+// Allow setting semantic properties in Talk namespace
+$smwgNamespacesWithSemanticLinks[NS_TALK] = true;
+
+
+// Increase from default setting for large form
+// See https://www.mediawiki.org/wiki/Extension_talk:Semantic_Forms/Archive_April_to_June_2012#Error:_Backtrace_limit_exceeded_during_parsing
+// If set to 10million, errors are seen when using Edit with form on mission pages like 41S
+// ini_set( 'pcre.backtrack_limit', 10000000 ); //10million
+ini_set( 'pcre.backtrack_limit', 1000000000 ); //1 billion
+
+$wgMaxImageArea = 1.25e10; // Images on [[Snorkel]] fail without this
+// $wgMemoryLimit = 500000000; //Default is 50M. This is 500M.
+
+// SMW Settings Overrides:
+$smwgQMaxSize = 5000;
+
+$wgGroupPermissions['CX3'] = $wgGroupPermissions['user'];
+$wgGroupPermissions['CX3']['viewpagescore'] = true;
+$wgGroupPermissions['Beta-tester'] = $wgGroupPermissions['user'];
+$wgGroupPermissions['Beta-tester']['viewpagescore'] = true;
+$wgGroupPermissions['sysop']['mergehistory'] = true;
+
