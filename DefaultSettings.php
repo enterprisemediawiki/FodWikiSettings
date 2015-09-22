@@ -208,6 +208,8 @@ ini_set( 'pcre.backtrack_limit', 1000000000 ); //1 billion
 $wgMaxImageArea = 1.25e10; // Images on [[Snorkel]] fail without this
 // $wgMemoryLimit = 500000000; //Default is 50M. This is 500M.
 
+// SMW Settings Overrides:
+$smwgQMaxSize = 5000;
 
 $wgGroupPermissions['CX3'] = $wgGroupPermissions['user'];
 $wgGroupPermissions['CX3']['viewpagescore'] = true;
