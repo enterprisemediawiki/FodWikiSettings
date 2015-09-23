@@ -1,18 +1,18 @@
 <?php
 
-$egJSCMOD_GroupPathName = str_replace(' ','',$egJSCMOD_GroupName);
+$egFodWikiSettings_GroupPathName = str_replace(' ','',$egFodWikiSettings_GroupName);
 
-$wgSitename = $egJSCMOD_GroupName . ' Wiki';
+$wgSitename = $egFodWikiSettings_GroupName . ' Wiki';
 $wgMetaNamespace = str_replace(' ','_',$wgSitename);
 
-$wgEmergencyContact = str_replace(' ','-',$wgSitename) . '-Wiki@mod2.jsc.nasa.gov';
+$wgEmergencyContact = str_replace(' ','-',$wgSitename) . '-Wiki@fod2.jsc.nasa.gov';
 $wgPasswordSender = $wgEmergencyContact;
 
-require_once "Includes/JSCMOD.body.php";
-$egJSCMOD_install_path = __DIR__;
+require_once "Includes/FodWikiSettings.body.php";
+$egFodWikiSettings_install_path = __DIR__;
 
 // development: error reporting
-if ( $egJSCMOD_debug ) {
+if ( $egFodWikiSettings_debug ) {
 
 	// turn error logging on
 	error_reporting( -1 );
@@ -44,7 +44,7 @@ $wgDBtype = "mysql";
 ## defaults for all runtime URL paths are based off of this.
 ## For more information on customizing the URLs please see:
 ## http://www.mediawiki.org/wiki/Manual:Short_URL
-$wgScriptPath       = "/wiki/$egJSCMOD_GroupPathName";
+$wgScriptPath       = "/wiki/$egFodWikiSettings_GroupPathName";
 $wgScriptExtension  = ".php";
 
 
@@ -54,20 +54,20 @@ $wgStylePath        = "$wgScriptPath/skins";
 
 ## The relative URL path to the logo.  Make sure you change this from the default,
 ## or else you'll overwrite your logo when you upgrade!
-$wgLogo             = "$wgScriptPath/extensions/JSCMOD/Groups/$egJSCMOD_GroupPathName/logo.png";
-$wgFavicon          = "$wgScriptPath/extensions/JSCMOD/Groups/$egJSCMOD_GroupPathName/favicon.ico";
-$wgAppleTouchIcon   = "$wgScriptPath/extensions/JSCMOD/Groups/$egJSCMOD_GroupPathName/apple-touch-icon.png";
+$wgLogo             = "$wgScriptPath/extensions/FodWikiSettings/Groups/$egFodWikiSettings_GroupPathName/logo.png";
+$wgFavicon          = "$wgScriptPath/extensions/FodWikiSettings/Groups/$egFodWikiSettings_GroupPathName/favicon.ico";
+$wgAppleTouchIcon   = "$wgScriptPath/extensions/FodWikiSettings/Groups/$egFodWikiSettings_GroupPathName/apple-touch-icon.png";
 
 
 /**
- *  JSC-MOD specific javascript modifications
+ *  FodWikiSettings specific javascript modifications
  **/
-$wgHooks['AjaxAddScript'][] = 'JSCMOD::addJSandCSS';
+$wgHooks['AjaxAddScript'][] = 'FodWikiSettings::addJSandCSS';
 
 
 ## The following included script gets programmatically modified 
 ## during backup operations to set read-only prior to backup and
 ## unset when backup is complete
-include "$egJSCMOD_install_path/Includes/wgReadOnly.php";
+include "$egFodWikiSettings_install_path/Includes/wgReadOnly.php";
 
-require_once "$egJSCMOD_install_path/DefaultSettings.php";
+require_once "$egFodWikiSettings_install_path/DefaultSettings.php";

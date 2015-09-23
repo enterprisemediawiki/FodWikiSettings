@@ -3,7 +3,7 @@
 $wgRCShowWatchingUsers = true; // shows number of watchers in recent changes
 // $wgAjaxUploadDestCheck = true; // AJAX check for file overwrite pre-upload
 
-// certain aspects of the JSCMOD install require title=? in query string
+// certain aspects of the FodWikiSettings install require title=? in query string
 $wgUsePathInfo = false;
 
 $wgEnotifUserTalk      = true; # UPO
@@ -122,13 +122,13 @@ $wgUseNPPatrol = true;
 #	AUTH SETTINGS
 #
 // get authentication settings
-JSCMOD::requireAuthSettings( $egJSCMOD_auth_type );
+FodWikiSettings::requireAuthSettings( $egFodWikiSettings_auth_type );
 
 
-if ($egJSCMOD_auth_type != 'local_dev') {
+if ($egFodWikiSettings_auth_type != 'local_dev') {
 
 	# any NDC
-	require_once $GLOBALS['egJSCMOD_install_path'] . "/Includes/Auth.php";
+	require_once $GLOBALS['egFodWikiSettings_install_path'] . "/Includes/Auth.php";
 	$wgAuth = new Auth_remoteuser();
 
 }
