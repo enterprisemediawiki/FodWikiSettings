@@ -1,12 +1,13 @@
 <?php
 
-$egFodWikiSettings_GroupPathName = str_replace(' ','',$egFodWikiSettings_GroupName);
 
 /* * * * * * * * * * * * * * * * *
  *                               *
  * REMOVED FOR FOD2 Wiki Farming *
  *                               *
  * * * * * * * * * * * * * * * * *
+
+$egFodWikiSettings_GroupPathName = str_replace(' ','',$egFodWikiSettings_GroupName);
 
 $wgSitename = $egFodWikiSettings_GroupName . ' Wiki';
 $wgMetaNamespace = str_replace(' ','_',$wgSitename);
