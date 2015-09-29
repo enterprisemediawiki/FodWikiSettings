@@ -76,7 +76,7 @@ $egExtensionLoaderConfig += array(
 
 	'SemanticInternalObjects' => array(
 		'git' => 'https://gerrit.wikimedia.org/r/mediawiki/extensions/SemanticInternalObjects.git',
-		'branch' => 'REL1_23',
+		'tag' => '0.8.1',
 	),
 
 	'SemanticCompoundQueries' => array(
@@ -173,7 +173,7 @@ $egExtensionLoaderConfig += array(
 
 	'ApprovedRevs' => array(
 		'git' => 'https://github.com/jamesmontalvo3/MediaWiki-ApprovedRevs.git',
-		'branch' => 'master',
+		'branch' => 'fod2',
 		'globals' => array(
 			'egApprovedRevsAutomaticApprovals' => false,
 		),
@@ -256,9 +256,9 @@ $egExtensionLoaderConfig += array(
 	),
 
 	#
-	# Semantic Meeting Minutes 
+	# Semantic Meeting Minutes
 	#
-	#	
+	#
 	'SemanticMeetingMinutes' => array(
 		'git' => 'https://github.com/enterprisemediawiki/SemanticMeetingMinutes.git',
 		'branch' => 'master',
