@@ -114,8 +114,8 @@ $wgResourceLoaderMaxQueryLength = -1;
 // allows users to remove the page title.
 $wgRestrictDisplayTitle = false;
 
-$wgUseRCPatrol = true;
-$wgUseNPPatrol = true;
+$wgUseRCPatrol = false;
+$wgUseNPPatrol = false;
 
 
 #

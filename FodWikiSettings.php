@@ -1,5 +1,12 @@
 <?php
 
+
+/* * * * * * * * * * * * * * * * *
+ *                               *
+ * REMOVED FOR FOD2 Wiki Farming *
+ *                               *
+ * * * * * * * * * * * * * * * * *
+
 $egFodWikiSettings_GroupPathName = str_replace(' ','',$egFodWikiSettings_GroupName);
 
 $wgSitename = $egFodWikiSettings_GroupName . ' Wiki';
@@ -7,6 +14,7 @@ $wgMetaNamespace = str_replace(' ','_',$wgSitename);
 
 $wgEmergencyContact = str_replace(' ','-',$wgSitename) . '-Wiki@fod2.jsc.nasa.gov';
 $wgPasswordSender = $wgEmergencyContact;
+*/
 
 require_once "Includes/FodWikiSettings.body.php";
 $egFodWikiSettings_install_path = __DIR__;
@@ -18,7 +26,7 @@ if ( $egFodWikiSettings_debug ) {
 	error_reporting( -1 );
 	ini_set( 'display_errors', 1 );
 	ini_set( 'log_errors', 1 );
-	
+
 	// Output errors to log file
 	ini_set( 'error_log', __DIR__ . '/php.log' );
 
@@ -36,6 +44,13 @@ else {
 	ini_set("display_errors", 0);
 
 }
+
+
+/* * * * * * * * * * * * * * * * *
+ *                               *
+ * REMOVED FOR FOD2 Wiki Farming *
+ *                               *
+ * * * * * * * * * * * * * * * * *
 
 ## JSC FOD Wikis use mysql
 $wgDBtype = "mysql";
@@ -57,7 +72,7 @@ $wgStylePath        = "$wgScriptPath/skins";
 $wgLogo             = "$wgScriptPath/extensions/FodWikiSettings/Groups/$egFodWikiSettings_GroupPathName/logo.png";
 $wgFavicon          = "$wgScriptPath/extensions/FodWikiSettings/Groups/$egFodWikiSettings_GroupPathName/favicon.ico";
 $wgAppleTouchIcon   = "$wgScriptPath/extensions/FodWikiSettings/Groups/$egFodWikiSettings_GroupPathName/apple-touch-icon.png";
-
+*/
 
 /**
  *  FodWikiSettings specific javascript modifications
@@ -65,7 +80,7 @@ $wgAppleTouchIcon   = "$wgScriptPath/extensions/FodWikiSettings/Groups/$egFodWik
 $wgHooks['AjaxAddScript'][] = 'FodWikiSettings::addJSandCSS';
 
 
-## The following included script gets programmatically modified 
+## The following included script gets programmatically modified
 ## during backup operations to set read-only prior to backup and
 ## unset when backup is complete
 include "$egFodWikiSettings_install_path/Includes/wgReadOnly.php";
